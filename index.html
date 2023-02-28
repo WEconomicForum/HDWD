@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <link rel="stylesheet" href="stylesheet.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Frontend Mentor | Interactive rating component</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Rating state start -->
+    <div class="box">
+      <div class="circleStar">
+        <svg
+          class="star"
+          width="17"
+          height="16"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="m9.067.43 1.99 4.031c.112.228.33.386.58.422l4.45.647a.772.772 0 0 1 .427 1.316l-3.22 3.138a.773.773 0 0 0-.222.683l.76 4.431a.772.772 0 0 1-1.12.813l-3.98-2.092a.773.773 0 0 0-.718 0l-3.98 2.092a.772.772 0 0 1-1.119-.813l.76-4.431a.77.77 0 0 0-.222-.683L.233 6.846A.772.772 0 0 1 .661 5.53l4.449-.647a.772.772 0 0 0 .58-.422L7.68.43a.774.774 0 0 1 1.387 0Z"
+            fill="#FC7614"
+          />
+        </svg>
+      </div>
+      <h1>How did we do?</h1>
+      <p>
+        Please let us know how we did with your support request. All feedback is
+        appreciated to help us improve our offering!
+      </p>
+      <div class="row">
+        <div class="circle" data-value="1">1</div>
+        <div class="circle" data-value="2">2</div>
+        <div class="circle" data-value="3">3</div>
+        <div class="circle" data-value="4">4</div>
+        <div class="circle" data-value="5">5</div>
+      </div>
+      <button id="submit" class="submit">SUBMIT</button>
+      <script>
+        const circles = document.querySelectorAll(".circle");
+        let selectedCount = 0;
+
+        circles.forEach((circle) => {
+          circle.addEventListener("click", (event) => {
+            const value = event.target.getAttribute("data-value");
+            selectedCount = parseInt(value);
+            circles.forEach((circle) => {
+              circle.classList.remove("selected");
+            });
+            for (let i = 0; i < selectedCount; i++) {
+              circles[i].classList.add("selected");
+            }
+          });
+        });
+
+        const submitButton = document.getElementById("submit");
+        submitButton.addEventListener("click", (event) => {
+          event.preventDefault();
+          const selectedText = "You selected " + selectedCount + "out of 5";
+          const newWindow = window.open("", "_blank");
+          newWindow.document.write("<h1>Thank you for your rating!</h1>");
+          newWindow.document.write("<p>" + selectedText + "</p>");
+        });
+
+        const circleBtns = document.querySelectorAll(".circle");
+        let activeBtn = null;
+
+        function handleClick(e) {
+          const btn = e.target;
+
+          if (activeBtn) {
+            activeBtn.classList.remove("active");
+          }
+
+          activeBtn = btn;
+          activeBtn.classList.add("active");
+        }
+
+        circleBtns.forEach((btn) => {
+          btn.addEventListener("click", handleClick);
+        });
+
+        const style = newWindow.document.createElement(`style`);
+        style.innerHTML = `
+          body {
+            background-color: black;
+          }
+
+          .box {
+          width: 320px;
+          height: 350px;
+          border-radius: 20px;
+          background-image: linear-gradient(hsl(213, 19%, 18%), hsl(216, 12%, 8%));
+          text-align: left;
+          padding: 30px;
+          }
+          `;
+        newWindow.document.head.appendChild(style);
+      </script>
+    </div>
+
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Jiri</a>.
+    </div>
+  </body>
+</html>

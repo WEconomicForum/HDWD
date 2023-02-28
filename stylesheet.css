@@ -1,0 +1,84 @@
+body {
+  background-color: black;
+}
+
+.box {
+  width: 320px;
+  height: 350px;
+  border-radius: 20px;
+  background-image: linear-gradient(hsl(213, 19%, 18%), hsl(216, 12%, 8%));
+  text-align: left;
+  padding: 30px;
+}
+
+.circleStar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: hsl(213, 19%, 21%);
+  text-align: center;
+  line-height: 58px;
+}
+
+.star {
+  position: relative;
+  left: 1px;
+}
+
+h1 {
+  color: white;
+  font-family: "Overpass", sans-serif;
+  font-size: 27px;
+  position: relative;
+  top: 10px;
+}
+
+p {
+  width: 300px;
+  color: hsl(217, 12%, 63%);
+  font-family: "Overpass", sans-serif;
+  font-size: 15px;
+  line-height: 25px;
+  position: relative;
+  top: 5px;
+}
+
+.row div {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  color: hsl(217, 12%, 63%);
+  border-radius: 50%;
+  margin-right: 10px;
+  background-color: hsl(213, 19%, 18%);
+  line-height: 53px;
+  font-family: "Overpass", sans-serif;
+  position: relative;
+  top: 12px;
+  left: 5px;
+}
+
+.circle:active {
+  background-color: hsl(217, 12%, 63%);
+}
+
+.submit {
+  width: 320px;
+  height: 50px;
+  border-radius: 25px;
+  background-color: hsl(25, 97%, 53%);
+  color: white;
+  position: relative;
+  top: 40px;
+  font-family: "Overpass", sans-serif;
+  font-weight: 700;
+  letter-spacing: 3px;
+  line-height: 50px;
+}
+
+.submit:hover {
+  color: hsl(25, 97%, 53%);
+  background-color: white;
+  cursor: pointer;
+}
